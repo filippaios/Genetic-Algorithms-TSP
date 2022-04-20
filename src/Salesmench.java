@@ -99,7 +99,7 @@ public class Salesmench {
 
 	public SalesmanGenome optimize() {
 
-		List<SalesmanGenome> population = new ArrayList<>(); // Φτιαχνει λιστα με Genome
+		List<SalesmanGenome> population = new ArrayList<>(); // Φτιαχνει λιστα με διαδρομές
 		for (int i = 0; i < generationSize; i++) { // κάνει Χ επαναληψεις οσες του εχουμε δωσει να κανει
 			population.add(new SalesmanGenome(numberOfCities, travelPrices, startingCity));
 		}

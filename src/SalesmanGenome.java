@@ -30,7 +30,7 @@ public class SalesmanGenome implements Comparable {
             fitness += travelPrices[currentCity][gene]; //σε κάθε επαναληψη προχωραει 1 στοιχειο στον πινακα και υπολογιζει κοστος
             currentCity = gene;
         }
-        fitness += travelPrices[genome.get(numberOfCities-2)][startingCity];
+        fitness += travelPrices[genome.get(numberOfCities-2)][startingCity]; //προσθετει την τελευταια διαδρομη για να φτασει ξανα στην αρχη
         return fitness;
     }
     //ΤΥΧΑΙΑ ΤΟΠΟΘΕΤΗΣΗ ΣΗΜΕΙΩΝ
