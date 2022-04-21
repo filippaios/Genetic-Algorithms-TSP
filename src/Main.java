@@ -1,9 +1,9 @@
 import java.util.*;
 
 public class Main {
-    public static void printTravelPrices(int[][] travelPrices, int numberOfCities){
-        for(int i = 0; i<numberOfCities; i++){
-            for(int j=0; j<numberOfCities; j++){
+    public static void print_kostoi(int[][] travelPrices, int shmeia){
+        for(int i = 0; i<shmeia; i++){
+            for(int j=0; j<shmeia; j++){
                 System.out.print(travelPrices[i][j]);               
                  System.out.print("  ");               
             }
@@ -12,18 +12,18 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        int numberOfCities = 5;
+        int arithmos_shmeiwn = 5;
         
-        int[][] travelPrices= {  {0,4,4,7,3}, {4,0,2,3,5}, {4,2,0,2,3}, {7,3,2,0,6}, {3,5,3,6,0}  };
+        int[][] kostoi= {  {0,4,4,7,3}, {4,0,2,3,5}, {4,2,0,2,3}, {7,3,2,0,6}, {3,5,3,6,0}  };
         
 
-        printTravelPrices(travelPrices,numberOfCities);
+        print_kostoi(kostoi,arithmos_shmeiwn);
 
         Random rn = new Random();
-        int city = rn.nextInt(5);
+        int point = rn.nextInt(5);
         
-        //random αρχικο σημειο-πόλη
-        Salesmench geneticAlgorithm = new Salesmench(numberOfCities, travelPrices, city, city);
+        
+        Salesmench geneticAlgorithm = new Salesmench(arithmos_shmeiwn, kostoi, point, point);
         SalesmanGenome result = geneticAlgorithm.optimize(); 
         System.out.println(result);
 
