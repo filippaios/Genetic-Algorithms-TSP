@@ -23,7 +23,7 @@ public class Main {
         int point = rn.nextInt(5);
         
         
-        Salesmench geneticAlgorithm = new Salesmench(arithmos_shmeiwn, kostoi, point, point);
+        Salesmench geneticAlgorithm = new Salesmench(arithmos_shmeiwn, kostoi, point, 15);
         SalesmanGenome result = geneticAlgorithm.optimize(); 
         System.out.println(result);
 
