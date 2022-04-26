@@ -1,90 +1,93 @@
 import java.util.*;
 
 public class SalesmanGenome implements Comparable {
-    List<Integer> genome;
-    int[][] travelPrices;
-    int startingCity;
-    int numberOfCities = 0;
-    int fitness;
+	List<Integer> diadromh;
+	int[][] kostoi;
+	int arxiko_point;
+	int arithmos_shmeiwn = 0;
+	int kostos;
 
-    public SalesmanGenome(int numberOfCities, int[][] travelPrices, int startingCity){
-        this.travelPrices = travelPrices;
-        this.startingCity = startingCity;
-        this.numberOfCities = numberOfCities;
-        genome = randomSalesman(); //random 4 σημεια ενδιαμεσα
-        fitness = this.calculateFitness(); //παει να υπολογισει το κοστος τους
-    }
+	public SalesmanGenome(int arithmos_shmeiwn, int[][] kostoi, int arxiko_point) {
+		this.kostoi = kostoi;
+		this.arxiko_point = arxiko_point;
+		this.arithmos_shmeiwn = arithmos_shmeiwn;
+		diadromh = randomSalesman(); // random 4 σημεια ενδιαμεσα
+		kostos = this.upologismos_kostous(); // παει να υπολογισει το κοστος τους
+	}
 
-    public SalesmanGenome(List<Integer> permutationOfCities, int numberOfCities, int[][] travelPrices, int startingCity){
-        genome = permutationOfCities;
-        this.travelPrices = travelPrices;
-        this.startingCity = startingCity;
-        this.numberOfCities = numberOfCities;
-        fitness = this.calculateFitness();
-    }
+	public SalesmanGenome(List<Integer> metalagmenes_diadromes, int arithmos_shmeiwn, int[][] kostoi,
+			int arxiko_point) {
+		diadromh = metalagmenes_diadromes;
+		this.kostoi = kostoi;
+		this.arxiko_point = arxiko_point;
+		this.arithmos_shmeiwn = arithmos_shmeiwn;
+		kostos = this.upologismos_kostous();
+	}
+
 //ΥΠΟΛΟΓΙΣΜΟΣ ΚΟΣΤΟΥΣ
-    public int calculateFitness(){
-        int fitness = 0;
-        int currentCity = startingCity;
-        for ( int gene : genome) {
-            fitness += travelPrices[currentCity][gene]; //σε κάθε επαναληψη προχωραει 1 στοιχειο στον πινακα και υπολογιζει κοστος
-            currentCity = gene;
-        }
-        fitness += travelPrices[genome.get(numberOfCities-2)][startingCity]; //προσθετει την τελευταια διαδρομη για να φτασει ξανα στην αρχη
-        return fitness;
-    }
-    //ΤΥΧΑΙΑ ΤΟΠΟΘΕΤΗΣΗ ΣΗΜΕΙΩΝ
-    private List<Integer> randomSalesman(){ //βαζει τυχαια σειρα τα ενδιαμεσα σημεια
-        List<Integer> result = new ArrayList<Integer>();
-        for(int i=0; i<numberOfCities; i++) {
-            if(i!=startingCity)
-                result.add(i);
-        }
-        Collections.shuffle(result);
-        return result;
-    }
+	public int upologismos_kostous() {
+		int kostos = 0;
+		int shmeio = arxiko_point;
+		for (int gene : diadromh) {
+			kostos += kostoi[shmeio][gene]; // σε κάθε επαναληψη προχωραει 1 στοιχειο στον πινακα και υπολογιζει κοστος
+			shmeio = gene;
+		}
+		kostos += kostoi[diadromh.get(arithmos_shmeiwn - 2)][arxiko_point]; // προσθετει την τελευταια διαδρομη για να
+																			// φτασει ξανα στην αρχη
+		return kostos;
+	}
 
-    public List<Integer> getGenome() {
-        return genome;
-    }
+	// ΤΥΧΑΙΑ ΤΟΠΟΘΕΤΗΣΗ ΣΗΜΕΙΩΝ
+	private List<Integer> randomSalesman() { // βαζει τυχαια σειρα τα ενδιαμεσα σημεια
+		List<Integer> lista = new ArrayList<Integer>();
+		for (int i = 0; i < arithmos_shmeiwn; i++) {
+			if (i != arxiko_point)
+				lista.add(i);
+		}
+		Collections.shuffle(lista);
+		return lista;
+	}
 
-    public int getStartingCity() {
-        return startingCity;
-    }
+	public List<Integer> getdiadromh() {
+		return diadromh;
+	}
 
-    public int getFitness() {
-        return fitness;
-    }
+	public int getarxiko_point() {
+		return arxiko_point;
+	}
 
-    public void setFitness(int fitness) {
-        this.fitness = fitness;
-    }
+	public int getkostos() {
+		return kostos;
+	}
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Path: ");
-        sb.append(startingCity);
-        for ( int gene: genome ) {
-            sb.append(" ");
-            sb.append(gene);
-        }
-        sb.append(" ");
-        sb.append(startingCity);
-        sb.append("\nLength: ");
-        sb.append(this.fitness);
-        return sb.toString();
-    }
+	public void setkostos(int kostos) {
+		this.kostos = kostos;
+	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Path: ");
+		builder.append(arxiko_point);
+		for (int gene : diadromh) {
+			builder.append(" ");
+			builder.append(gene);
+		}
+		builder.append(" ");
+		builder.append(arxiko_point);
+		builder.append("\nLength: ");
+		builder.append(this.kostos);
+		return builder.toString();
+	}
 
-    @Override
-    public int compareTo(Object o) {
-        SalesmanGenome genome = (SalesmanGenome) o;
-        if(this.fitness > genome.getFitness())
-            return 1;
-        else if(this.fitness < genome.getFitness())
-            return -1;
-        else
-            return 0;
-    }
+	@Override
+	public int compareTo(Object o) {
+		SalesmanGenome diadromh = (SalesmanGenome) o;
+		if (this.kostos > diadromh.getkostos())
+			return 1;
+		else if (this.kostos < diadromh.getkostos())
+			return -1;
+		else
+			return 0;
+	}
 }
