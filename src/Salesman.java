@@ -18,56 +18,65 @@ public class Salesman {
 		this.arxiko_shmeio = arxiko_shmeio;
 		this.stoxos_kostous = stoxos_kostous;
 
-		arithmos_diadromwn = 20;
+		arithmos_diadromwn = 5;
 		megethos_anaparagwghs = 5;
 		arithmos_ekseliksewn = 5; // ΜΕΓΙΣΤΟΣ ΑΡΙΘΜΟΣ ΑΠΟΓΟΝΩΝ ΠΟΥ ΘΑ ΕΞΕΛΙΧΘΟΥΝ
 		pososto_metallakshs = 0.1f;
 	}
 
-//Αρχικη συνάρτηση
-	public SalesmanGenome optimize() {
+//Αρχική Συνάρτηση Αλγορίθμου για Βελτιστοποίηση
+	public SalesmanGenome veltistopoihsh() {
 
 		List<SalesmanGenome> diadromes = new ArrayList<>(); // Φτιαχνει λιστα με διαδρομές
-		for (int i = 0; i < arithmos_diadromwn; i++) { // κάνει Χ επαναληψεις οσες του εχουμε δωσει να κανει
-			diadromes.add(new SalesmanGenome(arithmos_shmeiwn, kostos, arxiko_shmeio));
+		System.out.println("ΔΙΑΔΡΟΜΕΣ:");
+		for (int i = 0; i < arithmos_diadromwn; i++) { // Δημιουργεί 5 διαδρομές (όσες αναθέσαμε στην μεταβλητη)		
+			diadromes.add(new SalesmanGenome(arithmos_shmeiwn, kostos, arxiko_shmeio));  
+			System.out.println("Κόστος:" + diadromes.get(i).getkostos() +"-"+ "Διαδρομή"+ diadromes.get(i).getdiadromh()+ "Με αρχή και Τέλος το σημείο"+" "+diadromes.get(i).arxiko_point );
+			
 		}
-		SalesmanGenome globalBestGenome = diadromes.get(0); // παιρνει το πρωτο απο την αλη σαν αρχικοποιηση
+		SalesmanGenome kaluterh_diadromh = diadromes.get(0); // Παιρνει το πρωτο απο την λίστα διαδρομών
 		for (int i = 0; i < arithmos_ekseliksewn; i++) {
-			List<SalesmanGenome> selected = selection(diadromes); // φτιαχνει λιστες με τους γονεις προς αναπαραγωγη
-			diadromes = createGeneration(selected); // παιρνει την λιστα με τους γοενεις προς αναπαραγωγη που εφτιαξε
+			List<SalesmanGenome> selected = selection(diadromes); // Φτιάχνει λίστα με τους γονεις προς αναπαραγωγη
+			diadromes = dimiourgia_apogonwn(selected); // Παιρνει την λιστα με τους γοενεις προς αναπαραγωγη που εφτιαξε
 													// στην προηγουμενη συναρτηση και φτιαχνει διαδρομες
-			globalBestGenome = Collections.min(diadromes); // ΠΑΙΡΝΕΙ ΤΗΝ ΜΙΚΡΟΤΕΡΗ ΔΙΑΔΡΟΜΗ
-			if (globalBestGenome.getkostos() < stoxos_kostous)
+			kaluterh_diadromh = Collections.min(diadromes); // ΠΑΙΡΝΕΙ ΤΗΝ ΜΙΚΡΟΤΕΡΗ ΔΙΑΔΡΟΜΗ
+			if (kaluterh_diadromh.getkostos() < stoxos_kostous)
 				break;
 		}
-		return globalBestGenome;
+		return kaluterh_diadromh;
 	}
 
 	// ΕΔΩ ΕΠΙΛΕΓΟΝΤΑΙ ΟΙ ΓΟΝΕΙΣ ΓΙΑ ΑΝΑΠΑΡΑΓΩΓΗ
 	public List<SalesmanGenome> selection(List<SalesmanGenome> diadromes) {
 		List<SalesmanGenome> selected = new ArrayList<>();
+		//System.out.println("Λίστα Γονέων Διαδρομής:");
 		for (int i = 0; i < megethos_anaparagwghs; i++) { // ΠΌΣΑ ΘΑ ΑΝΑΠΑΡ’ΞΟΥΜΕ
 			float total_fitnes = 0;
 			for (SalesmanGenome diadromh : diadromes) {
-				total_fitnes += (float) 1 / diadromh.getkostos(); // αθροιζουμε τα κοστοι
+				total_fitnes += (float) 1 / diadromh.getkostos(); // αθροιζουμε τα κοστη
 			}
+			//System.out.println("Συνολικό Κόστος Διαδρομής="+ total_fitnes);
 			Random random = new Random();
 			float random_fitnes = 0 + random.nextFloat() * (total_fitnes - 0); // RANDOM AΠΟ ΤΟ ΑΘΡΟΙΣΜΑ ΤΟΥ ΚΟΣΤΟΥΣ
 																				// FLOAT
-
+			//System.out.println("Random από το Κόστος Διαδρομής="+ random_fitnes);
 			float currentSum = 0;
 			for (SalesmanGenome diadromh : diadromes) {
 				currentSum += (float) 1 / diadromh.getkostos();
 				if (currentSum >= random_fitnes) {
 					selected.add(diadromh); // ΒΑΖΕΙ ΣΕ ΛΙΣΤΑ ΓΟΝΕΩΝ ΟΣΑ ΕΙΝΑΙ ΜΕΓΑΛΥΤΕΡΑ ΑΠΟ ΤΟ RANDOM
-				}
+				}		
+				
 			}
+			
+			//System.out.println("Κόστος:" + selected.get(i).getkostos() +"-"+ "Διαδρομή"+ selected.get(i).getdiadromh()+ "Με αρχή και Τέλος το σημείο"+" "+selected.get(i).arxiko_point );
 		}
+		
 		return selected;
 	}
 
 	// ΑΝΑΠΑΡΑΓΩΓΗ ΓΩΝΕΩΝ
-	public List<SalesmanGenome> createGeneration(List<SalesmanGenome> diadromes) {
+	public List<SalesmanGenome> dimiourgia_apogonwn(List<SalesmanGenome> diadromes) {
 		List<SalesmanGenome> generation = new ArrayList<>();
 		int current_arithmos_diadromwn = 0;
 		while (current_arithmos_diadromwn < arithmos_diadromwn) { // φτιαχνει διαδρομες για τα παιδια όσες και οι
@@ -83,7 +92,6 @@ public class Salesman {
 	}
 
 	public List<SalesmanGenome> crossover(List<SalesmanGenome> parents) {
-
 		Random random = new Random();
 		int breakpoint = random.nextInt(sundiasmoi);
 		List<SalesmanGenome> paidia = new ArrayList<>();

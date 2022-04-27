@@ -29,22 +29,22 @@ public class SalesmanGenome implements Comparable {
 		int kostos = 0;
 		int shmeio = arxiko_point;
 		for (int gene : diadromh) {
-			kostos += kostoi[shmeio][gene]; // σε κάθε επαναληψη προχωραει 1 στοιχειο στον πινακα και υπολογιζει κοστος
+			kostos += kostoi[shmeio][gene]; // Σε κάθε επαναληψη προχωραει 1 στοιχειο στον πινακα και υπολογιζει κοστος
 			shmeio = gene;
 		}
 		kostos += kostoi[diadromh.get(arithmos_shmeiwn - 2)][arxiko_point]; // προσθετει την τελευταια διαδρομη για να
-																			// φτασει ξανα στην αρχη
+																			// φτασει ξανα στην αρχική πόλη.
 		return kostos;
 	}
 
 	// ΤΥΧΑΙΑ ΤΟΠΟΘΕΤΗΣΗ ΣΗΜΕΙΩΝ
-	private List<Integer> randomSalesman() { // βαζει τυχαια σειρα τα ενδιαμεσα σημεια
+	private List<Integer> randomSalesman() { // Τοποθετεί σε τυχαια σειρα τα ενδιαμεσα σημεια
 		List<Integer> lista = new ArrayList<Integer>();
 		for (int i = 0; i < arithmos_shmeiwn; i++) {
 			if (i != arxiko_point)
 				lista.add(i);
 		}
-		Collections.shuffle(lista);
+		Collections.shuffle(lista); //Μέθοδος shuffle για ανακάτεμα
 		return lista;
 	}
 
