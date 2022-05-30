@@ -20,75 +20,75 @@ public class Salesman {
 
 		arithmos_diadromwn = 5;
 		megethos_anaparagwghs = 5;
-		arithmos_ekseliksewn = 5; // ΜΕΓΙΣΤΟΣ ΑΡΙΘΜΟΣ ΑΠΟΓΟΝΩΝ ΠΟΥ ΘΑ ΕΞΕΛΙΧΘΟΥΝ
+		arithmos_ekseliksewn = 5; // ΞΞ•Ξ“Ξ™Ξ£Ξ¤ΞΞ£ Ξ‘Ξ΅Ξ™ΞΞΞΞ£ Ξ‘Ξ ΞΞ“ΞΞΞ©Ξ Ξ ΞΞ¥ ΞΞ‘ Ξ•ΞΞ•Ξ›Ξ™Ξ§ΞΞΞ¥Ξ
 		pososto_metallakshs = 0.1f;
 	}
 
-//Αρχική Συνάρτηση Αλγορίθμου για Βελτιστοποίηση
+//Ξ‘ΟΟ‡ΞΉΞΊΞ® Ξ£Ο…Ξ½Ξ¬ΟΟ„Ξ·ΟƒΞ· Ξ‘Ξ»Ξ³ΞΏΟΞ―ΞΈΞΌΞΏΟ… Ξ³ΞΉΞ± Ξ’ΞµΞ»Ο„ΞΉΟƒΟ„ΞΏΟ€ΞΏΞ―Ξ·ΟƒΞ·
 	public SalesmanGenome veltistopoihsh() {
 
-		List<SalesmanGenome> diadromes = new ArrayList<>(); // Φτιαχνει λιστα με διαδρομές
-		System.out.println("ΔΙΑΔΡΟΜΕΣ:");
-		for (int i = 0; i < arithmos_diadromwn; i++) { // Δημιουργεί 5 διαδρομές (όσες αναθέσαμε στην μεταβλητη)		
+		List<SalesmanGenome> diadromes = new ArrayList<>(); // Ξ¦Ο„ΞΉΞ±Ο‡Ξ½ΞµΞΉ Ξ»ΞΉΟƒΟ„Ξ± ΞΌΞµ Ξ΄ΞΉΞ±Ξ΄ΟΞΏΞΌΞ­Ο‚
+		System.out.println("Ξ”Ξ™Ξ‘Ξ”Ξ΅ΞΞΞ•Ξ£:");
+		for (int i = 0; i < arithmos_diadromwn; i++) { // Ξ”Ξ·ΞΌΞΉΞΏΟ…ΟΞ³ΞµΞ― 5 Ξ΄ΞΉΞ±Ξ΄ΟΞΏΞΌΞ­Ο‚ (ΟΟƒΞµΟ‚ Ξ±Ξ½Ξ±ΞΈΞ­ΟƒΞ±ΞΌΞµ ΟƒΟ„Ξ·Ξ½ ΞΌΞµΟ„Ξ±Ξ²Ξ»Ξ·Ο„Ξ·)		
 			diadromes.add(new SalesmanGenome(arithmos_shmeiwn, kostos, arxiko_shmeio));  
-			System.out.println("Κόστος:" + diadromes.get(i).getkostos() +"-"+ "Διαδρομή"+ diadromes.get(i).getdiadromh()+ "Με αρχή και Τέλος το σημείο"+" "+diadromes.get(i).arxiko_point );
+			System.out.println("ΞΟΟƒΟ„ΞΏΟ‚:" + diadromes.get(i).getkostos() +"-"+ "Ξ”ΞΉΞ±Ξ΄ΟΞΏΞΌΞ®"+ diadromes.get(i).getdiadromh()+ "ΞΞµ Ξ±ΟΟ‡Ξ® ΞΊΞ±ΞΉ Ξ¤Ξ­Ξ»ΞΏΟ‚ Ο„ΞΏ ΟƒΞ·ΞΌΞµΞ―ΞΏ"+" "+diadromes.get(i).arxiko_point );
 			
 		}
-		SalesmanGenome kaluterh_diadromh = diadromes.get(0); // Παιρνει το πρωτο απο την λίστα διαδρομών
+		SalesmanGenome kaluterh_diadromh = diadromes.get(0); // Ξ Ξ±ΞΉΟΞ½ΞµΞΉ Ο„ΞΏ Ο€ΟΟ‰Ο„ΞΏ Ξ±Ο€ΞΏ Ο„Ξ·Ξ½ Ξ»Ξ―ΟƒΟ„Ξ± Ξ΄ΞΉΞ±Ξ΄ΟΞΏΞΌΟΞ½
 		for (int i = 0; i < arithmos_ekseliksewn; i++) {
-			List<SalesmanGenome> selected = selection(diadromes); // Φτιάχνει λίστα με τους γονεις προς αναπαραγωγη
-			diadromes = dimiourgia_apogonwn(selected); // Παιρνει την λιστα με τους γοενεις προς αναπαραγωγη που εφτιαξε
-													// στην προηγουμενη συναρτηση και φτιαχνει διαδρομες
-			kaluterh_diadromh = Collections.min(diadromes); // ΠΑΙΡΝΕΙ ΤΗΝ ΜΙΚΡΟΤΕΡΗ ΔΙΑΔΡΟΜΗ
+			List<SalesmanGenome> selected = selection(diadromes); // Ξ¦Ο„ΞΉΞ¬Ο‡Ξ½ΞµΞΉ Ξ»Ξ―ΟƒΟ„Ξ± ΞΌΞµ Ο„ΞΏΟ…Ο‚ Ξ³ΞΏΞ½ΞµΞΉΟ‚ Ο€ΟΞΏΟ‚ Ξ±Ξ½Ξ±Ο€Ξ±ΟΞ±Ξ³Ο‰Ξ³Ξ·
+			diadromes = dimiourgia_apogonwn(selected); // Ξ Ξ±ΞΉΟΞ½ΞµΞΉ Ο„Ξ·Ξ½ Ξ»ΞΉΟƒΟ„Ξ± ΞΌΞµ Ο„ΞΏΟ…Ο‚ Ξ³ΞΏΞµΞ½ΞµΞΉΟ‚ Ο€ΟΞΏΟ‚ Ξ±Ξ½Ξ±Ο€Ξ±ΟΞ±Ξ³Ο‰Ξ³Ξ· Ο€ΞΏΟ… ΞµΟ†Ο„ΞΉΞ±ΞΎΞµ
+													// ΟƒΟ„Ξ·Ξ½ Ο€ΟΞΏΞ·Ξ³ΞΏΟ…ΞΌΞµΞ½Ξ· ΟƒΟ…Ξ½Ξ±ΟΟ„Ξ·ΟƒΞ· ΞΊΞ±ΞΉ Ο†Ο„ΞΉΞ±Ο‡Ξ½ΞµΞΉ Ξ΄ΞΉΞ±Ξ΄ΟΞΏΞΌΞµΟ‚
+			kaluterh_diadromh = Collections.min(diadromes); // Ξ Ξ‘Ξ™Ξ΅ΞΞ•Ξ™ Ξ¤Ξ—Ξ ΞΞ™ΞΞ΅ΞΞ¤Ξ•Ξ΅Ξ— Ξ”Ξ™Ξ‘Ξ”Ξ΅ΞΞΞ—
 			if (kaluterh_diadromh.getkostos() < stoxos_kostous)
 				break;
 		}
 		return kaluterh_diadromh;
 	}
 
-	// ΕΔΩ ΕΠΙΛΕΓΟΝΤΑΙ ΟΙ ΓΟΝΕΙΣ ΓΙΑ ΑΝΑΠΑΡΑΓΩΓΗ
+	// Ξ•Ξ”Ξ© Ξ•Ξ Ξ™Ξ›Ξ•Ξ“ΞΞΞ¤Ξ‘Ξ™ ΞΞ™ Ξ“ΞΞΞ•Ξ™Ξ£ Ξ“Ξ™Ξ‘ Ξ‘ΞΞ‘Ξ Ξ‘Ξ΅Ξ‘Ξ“Ξ©Ξ“Ξ—
 	public List<SalesmanGenome> selection(List<SalesmanGenome> diadromes) {
 		List<SalesmanGenome> selected = new ArrayList<>();
-		//System.out.println("Λίστα Γονέων Διαδρομής:");
-		for (int i = 0; i < megethos_anaparagwghs; i++) { // ΠΌΣΑ ΘΑ ΑΝΑΠΑΡΆΞΟΥΜΕ
+		//System.out.println("Ξ›Ξ―ΟƒΟ„Ξ± Ξ“ΞΏΞ½Ξ­Ο‰Ξ½ Ξ”ΞΉΞ±Ξ΄ΟΞΏΞΌΞ®Ο‚:");
+		for (int i = 0; i < megethos_anaparagwghs; i++) { // Ξ ΞΞ£Ξ‘ ΞΞ‘ Ξ‘ΞΞ‘Ξ Ξ‘Ξ΅Ξ†ΞΞΞ¥ΞΞ•
 			float total_fitnes = 0;
 			for (SalesmanGenome diadromh : diadromes) {
-				total_fitnes += (float) 1 / diadromh.getkostos(); // αθροιζουμε τα κοστη
+				total_fitnes += (float) 1 / diadromh.getkostos(); // Ξ±ΞΈΟΞΏΞΉΞ¶ΞΏΟ…ΞΌΞµ Ο„Ξ± ΞΊΞΏΟƒΟ„Ξ·
 			}
-			//System.out.println("Συνολικό Κόστος Διαδρομής="+ total_fitnes);
+			//System.out.println("Ξ£Ο…Ξ½ΞΏΞ»ΞΉΞΊΟ ΞΟΟƒΟ„ΞΏΟ‚ Ξ”ΞΉΞ±Ξ΄ΟΞΏΞΌΞ®Ο‚="+ total_fitnes);
 			Random random = new Random();
-			float random_fitnes = 0 + random.nextFloat() * (total_fitnes - 0); // RANDOM AΠΟ ΤΟ ΑΘΡΟΙΣΜΑ ΤΟΥ ΚΟΣΤΟΥΣ
+			float random_fitnes = 0 + random.nextFloat() * (total_fitnes - 0); // RANDOM AΞ Ξ Ξ¤Ξ Ξ‘ΞΞ΅ΞΞ™Ξ£ΞΞ‘ Ξ¤ΞΞ¥ ΞΞΞ£Ξ¤ΞΞ¥Ξ£
 																				// FLOAT
-			//System.out.println("Random από το Κόστος Διαδρομής="+ random_fitnes);
+			//System.out.println("Random Ξ±Ο€Ο Ο„ΞΏ ΞΟΟƒΟ„ΞΏΟ‚ Ξ”ΞΉΞ±Ξ΄ΟΞΏΞΌΞ®Ο‚="+ random_fitnes);
 			float currentSum = 0;
 			for (SalesmanGenome diadromh : diadromes) {
 				currentSum += (float) 1 / diadromh.getkostos();
 				if (currentSum >= random_fitnes) {
-					selected.add(diadromh); // ΒΑΖΕΙ ΣΕ ΛΙΣΤΑ ΓΟΝΕΩΝ ΟΣΑ ΕΙΝΑΙ ΜΕΓΑΛΥΤΕΡΑ ΑΠΟ ΤΟ RANDOM
+					selected.add(diadromh); // Ξ’Ξ‘Ξ–Ξ•Ξ™ Ξ£Ξ• Ξ›Ξ™Ξ£Ξ¤Ξ‘ Ξ“ΞΞΞ•Ξ©Ξ ΞΞ£Ξ‘ Ξ•Ξ™ΞΞ‘Ξ™ ΞΞ•Ξ“Ξ‘Ξ›Ξ¥Ξ¤Ξ•Ξ΅Ξ‘ Ξ‘Ξ Ξ Ξ¤Ξ RANDOM
 				}		
 				
 			}
 			
-			//System.out.println("Κόστος:" + selected.get(i).getkostos() +"-"+ "Διαδρομή"+ selected.get(i).getdiadromh()+ "Με αρχή και Τέλος το σημείο"+" "+selected.get(i).arxiko_point );
+			//System.out.println("ΞΟΟƒΟ„ΞΏΟ‚:" + selected.get(i).getkostos() +"-"+ "Ξ”ΞΉΞ±Ξ΄ΟΞΏΞΌΞ®"+ selected.get(i).getdiadromh()+ "ΞΞµ Ξ±ΟΟ‡Ξ® ΞΊΞ±ΞΉ Ξ¤Ξ­Ξ»ΞΏΟ‚ Ο„ΞΏ ΟƒΞ·ΞΌΞµΞ―ΞΏ"+" "+selected.get(i).arxiko_point );
 		}
 		
 		return selected;
 	}
 
-	// ΑΝΑΠΑΡΑΓΩΓΗ ΓΩΝΕΩΝ
+	// Ξ‘ΞΞ‘Ξ Ξ‘Ξ΅Ξ‘Ξ“Ξ©Ξ“Ξ— Ξ“Ξ©ΞΞ•Ξ©Ξ
 	public List<SalesmanGenome> dimiourgia_apogonwn(List<SalesmanGenome> diadromes) {
 		List<SalesmanGenome> generation = new ArrayList<>();
 		int current_arithmos_diadromwn = 0;
-		while (current_arithmos_diadromwn < arithmos_diadromwn) { // φτιαχνει διαδρομες για τα παιδια όσες και οι
-																	// αρχικες.
+		while (current_arithmos_diadromwn < arithmos_diadromwn) { // Ο†Ο„ΞΉΞ±Ο‡Ξ½ΞµΞΉ Ξ΄ΞΉΞ±Ξ΄ΟΞΏΞΌΞµΟ‚ Ξ³ΞΉΞ± Ο„Ξ± Ο€Ξ±ΞΉΞ΄ΞΉΞ± ΟΟƒΞµΟ‚ ΞΊΞ±ΞΉ ΞΏΞΉ
+																	// Ξ±ΟΟ‡ΞΉΞΊΞµΟ‚.
 			List<SalesmanGenome> paidia = crossover(diadromes);
-			paidia.set(0, mutate(paidia.get(0))); // ΜΕΤΑΛΆΞΗ ΕΝΟΣ ΨΗΦΙΟΥ "0"
-			paidia.set(1, mutate(paidia.get(1)));// ΜΕΤΑΛΆΞΗ ΕΝΟΣ ΨΗΦΙΟΥ "1"
-			generation.addAll(paidia); // ΠΡΟΣΘΕΤΕΙ ΣΤΗΝ ΛΙΣΤΑ ΑΝΑΠΑΡΑΓΩΓΗΣ ΤΑ ΠΑΙΔΙΑ ΜΕΤΑ ΚΑΙ ΤΗΝ ΜΕΤΑΛΛΑΞΗ ΜΕ
-											// ΠΟΣΟΣΤΟ 10%
+			paidia.set(0, metalaksh(paidia.get(0))); // ΞΞ•Ξ¤Ξ‘Ξ›Ξ†ΞΞ— Ξ•ΞΞΞ£ Ξ¨Ξ—Ξ¦Ξ™ΞΞ¥ "0"
+			paidia.set(1, metalaksh(paidia.get(1)));// ΞΞ•Ξ¤Ξ‘Ξ›Ξ†ΞΞ— Ξ•ΞΞΞ£ Ξ¨Ξ—Ξ¦Ξ™ΞΞ¥ "1"
+			generation.addAll(paidia); // Ξ Ξ΅ΞΞ£ΞΞ•Ξ¤Ξ•Ξ™ Ξ£Ξ¤Ξ—Ξ Ξ›Ξ™Ξ£Ξ¤Ξ‘ Ξ‘ΞΞ‘Ξ Ξ‘Ξ΅Ξ‘Ξ“Ξ©Ξ“Ξ—Ξ£ Ξ¤Ξ‘ Ξ Ξ‘Ξ™Ξ”Ξ™Ξ‘ ΞΞ•Ξ¤Ξ‘ ΞΞ‘Ξ™ Ξ¤Ξ—Ξ ΞΞ•Ξ¤Ξ‘Ξ›Ξ›Ξ‘ΞΞ— ΞΞ•
+											// Ξ ΞΞ£ΞΞ£Ξ¤Ξ 10%
 			current_arithmos_diadromwn += 2;
 		}
-		return generation; // ΟΙ ΑΝΑΠΑΡΑΓΩΓΗ ΘΑ ΓΙΝΕΙ ΣΕ DIADROMES/2 ΠΑΙΔΙΑ.
+		return generation; // ΞΞ™ Ξ‘ΞΞ‘Ξ Ξ‘Ξ΅Ξ‘Ξ“Ξ©Ξ“Ξ— ΞΞ‘ Ξ“Ξ™ΞΞ•Ξ™ Ξ£Ξ• DIADROMES/2 Ξ Ξ‘Ξ™Ξ”Ξ™Ξ‘.
 	}
 
 	public List<SalesmanGenome> crossover(List<SalesmanGenome> parents) {
@@ -96,21 +96,21 @@ public class Salesman {
 		int breakpoint = random.nextInt(sundiasmoi);
 		List<SalesmanGenome> paidia = new ArrayList<>();
 
-		List<Integer> diadromh_1_gonea = new ArrayList<>(parents.get(0).getdiadromh()); // παιρνει τον ενδυαμεσο συνδιασμο
-																						// του 1ου στοιχειου
-		List<Integer> diadromh_2_gonea = new ArrayList<>(parents.get(1).getdiadromh());// παιρνει τον ενδυαμεσο συνδιασμο
-																					// του 2ου στοιχειου
+		List<Integer> diadromh_1_gonea = new ArrayList<>(parents.get(0).getdiadromh()); // Ο€Ξ±ΞΉΟΞ½ΞµΞΉ Ο„ΞΏΞ½ ΞµΞ½Ξ΄Ο…Ξ±ΞΌΞµΟƒΞΏ ΟƒΟ…Ξ½Ξ΄ΞΉΞ±ΟƒΞΌΞΏ
+																						// Ο„ΞΏΟ… 1ΞΏΟ… ΟƒΟ„ΞΏΞΉΟ‡ΞµΞΉΞΏΟ…
+		List<Integer> diadromh_2_gonea = new ArrayList<>(parents.get(1).getdiadromh());// Ο€Ξ±ΞΉΟΞ½ΞµΞΉ Ο„ΞΏΞ½ ΞµΞ½Ξ΄Ο…Ξ±ΞΌΞµΟƒΞΏ ΟƒΟ…Ξ½Ξ΄ΞΉΞ±ΟƒΞΌΞΏ
+																					// Ο„ΞΏΟ… 2ΞΏΟ… ΟƒΟ„ΞΏΞΉΟ‡ΞµΞΉΞΏΟ…
 
-		// ΔΗΜΙΟΥΡΓΙΑ ΠΑΙΔΙΟΥ
+		// Ξ”Ξ—ΞΞ™ΞΞ¥Ξ΅Ξ“Ξ™Ξ‘ Ξ Ξ‘Ξ™Ξ”Ξ™ΞΞ¥
 		for (int i = 0; i < breakpoint; i++) {
 			int newVal;
 			newVal = diadromh_2_gonea.get(i);
 			Collections.swap(diadromh_1_gonea, diadromh_1_gonea.indexOf(newVal), i);
 		}
 		paidia.add(new SalesmanGenome(diadromh_1_gonea, arithmos_shmeiwn, kostos, arxiko_shmeio));
-		diadromh_1_gonea = parents.get(0).getdiadromh(); // reseting the edited parent
+		diadromh_1_gonea = parents.get(0).getdiadromh(); 
 
-		// ΔΗΜΙΟΥΡΓΙΑ ΠΑΙΔΙΟΥ
+		// Ξ”Ξ—ΞΞ™ΞΞ¥Ξ΅Ξ“Ξ™Ξ‘ Ξ Ξ‘Ξ™Ξ”Ξ™ΞΞ¥
 		for (int i = breakpoint; i < sundiasmoi; i++) {
 			int newVal = diadromh_1_gonea.get(i);
 			Collections.swap(diadromh_2_gonea, diadromh_2_gonea.indexOf(newVal), i);
@@ -120,11 +120,11 @@ public class Salesman {
 		return paidia;
 	}
 
-	// ΜΕΤΑΛΑΞΗ ΜΕ ΠΟΣΟΣΤΟ 10%
-	public SalesmanGenome mutate(SalesmanGenome salesman) {
+	// ΞΞ•Ξ¤Ξ‘Ξ›Ξ‘ΞΞ— ΞΞ• Ξ ΞΞ£ΞΞ£Ξ¤Ξ 10%
+	public SalesmanGenome metalaksh(SalesmanGenome salesman) {
 		Random random = new Random();
-		float mutate = random.nextFloat();
-		if (mutate < pososto_metallakshs) {
+		float metalaksh = random.nextFloat();
+		if (metalaksh < pososto_metallakshs) {
 			List<Integer> diadromh = salesman.getdiadromh();
 			Collections.swap(diadromh, random.nextInt(sundiasmoi), random.nextInt(sundiasmoi));
 			return new SalesmanGenome(diadromh, arithmos_shmeiwn, kostos, arxiko_shmeio);
